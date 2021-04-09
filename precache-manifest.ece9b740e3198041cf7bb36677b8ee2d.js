@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f307cd0eb4039147f0939613b5adae31",
+    "revision": "16e2ea8c942ceb45929e161eebf877b8",
     "url": "/season-movies-react/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/season-movies-react/static/js/2.2402687c.chunk.js"
   },
   {
-    "revision": "701a71cf1da5915470e8",
-    "url": "/season-movies-react/static/js/main.9d81f3f3.chunk.js"
+    "revision": "7020240be664be460317",
+    "url": "/season-movies-react/static/js/main.1cb9b1aa.chunk.js"
   },
   {
     "revision": "5bbf86287d3c8238c5ec",
