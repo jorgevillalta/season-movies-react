@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.js": "/season-movies-react/static/js/main.9d81f3f3.chunk.js",
+    "main.js.map": "/season-movies-react/static/js/main.9d81f3f3.chunk.js.map",
+    "runtime-main.js": "/season-movies-react/static/js/runtime-main.8950b5b6.js",
+    "runtime-main.js.map": "/season-movies-react/static/js/runtime-main.8950b5b6.js.map",
+    "static/css/2.a2bd1f3c.chunk.css": "/season-movies-react/static/css/2.a2bd1f3c.chunk.css",
+    "static/js/2.2402687c.chunk.js": "/season-movies-react/static/js/2.2402687c.chunk.js",
+    "static/js/2.2402687c.chunk.js.map": "/season-movies-react/static/js/2.2402687c.chunk.js.map",
+    "index.html": "/season-movies-react/index.html",
+    "precache-manifest.1b15a5550a1b826ef749d496c6f2edc9.js": "/season-movies-react/precache-manifest.1b15a5550a1b826ef749d496c6f2edc9.js",
+    "service-worker.js": "/season-movies-react/service-worker.js",
+    "static/css/2.a2bd1f3c.chunk.css.map": "/season-movies-react/static/css/2.a2bd1f3c.chunk.css.map",
+    "static/media/blueprint-icons.css": "/season-movies-react/static/media/icons-20.cef8cdbb.woff"
+  }
+}
