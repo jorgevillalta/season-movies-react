@@ -36,9 +36,7 @@ const MoviePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [birthDate, setBirthDate] = useState(new Date('1983-06-13'));
 
-  const { response, isLoading } = useSelector(
-    (state) => state.movieBrowser.movieList
-  );
+  const { response, isLoading } = useSelector((state) => state.movieBrowser.movieList);
   const movies = movieHelpers.getMoviesList(response); // TODO useMemo when response changes
 
   /* */

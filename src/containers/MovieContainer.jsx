@@ -7,10 +7,10 @@ import MovieCard from '../components/MovieCard';
 const MovieContainer = ({ movie }) => {
   const dispatch = useDispatch();
 
-  const clickOpenMovieModal = useCallback(
-    () => dispatch(openMovieModal(movie.id)),
-    [dispatch, movie.id]
-  );
+  const clickOpenMovieModal = useCallback(() => dispatch(openMovieModal(movie.id)), [
+    dispatch,
+    movie.id
+  ]);
 
   return <MovieCard movie={movie} onClick={clickOpenMovieModal} />;
 };

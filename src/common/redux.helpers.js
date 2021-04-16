@@ -1,9 +1,6 @@
 // Helper function to enables passing an object with
 // the action.type as the key and the reducer function as the value
-export const createReducer = (
-  initialState = {},
-  actionHandlerKeyFuncs = {}
-) => {
+export const createReducer = (initialState = {}, actionHandlerKeyFuncs = {}) => {
   return (state = initialState, action) => {
     const actionHandler = actionHandlerKeyFuncs[action.type];
     return actionHandler ? actionHandler(state, action) : state;
@@ -21,22 +18,14 @@ const createAction = (type, actionProps) => {
 // e.g. createAsyncActionCreator('GET_TOP_MOVIES', getTopMovies, {page: 1})
 // I admit that passing the asyncRequestFn without params is not ideal, but
 // wanted to capture the requestParams as part of the start action for logging transparency
-export const createAsyncActionCreator = (
-  actionType,
-  asyncRequestFn,
-  requestParams
-) => {
+export const createAsyncActionCreator = (actionType, asyncRequestFn, requestParams) => {
   return (dispatch) => {
     dispatch(createAction(`${actionType}_START`, { request: requestParams }));
     // NOTE: asyncRequestFn must accept single object parameter
     // in order to resolve param values
     return asyncRequestFn(requestParams)
-      .then((json) =>
-        dispatch(createAction(`${actionType}_SUCCESS`, { response: json }))
-      )
-      .catch((error) =>
-        dispatch(createAction(`${actionType}_ERROR`, { error }))
-      );
+      .then((json) => dispatch(createAction(`${actionType}_SUCCESS`, { response: json })))
+      .catch((error) => dispatch(createAction(`${actionType}_ERROR`, { error })));
   };
 };
 

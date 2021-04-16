@@ -23,9 +23,7 @@ const Image = styled.img`
   max-width: 100%;
 `;
 
-const Title = styled(({ ...props }) => (
-  <Tag fill={true} intent={Intent.PRIMARY} {...props} />
-))``;
+const Title = styled(({ ...props }) => <Tag fill={true} intent={Intent.PRIMARY} {...props} />)``;
 
 /* */
 MoviePoster.Image = Image;

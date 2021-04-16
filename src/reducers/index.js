@@ -6,8 +6,7 @@ import movieModalReducer from './modal';
 
 const movieStartReducer = (state, action) => {
   // Reset current results if date changes
-  const response =
-    state.response && !action.request.reset ? { ...state.response } : undefined;
+  const response = state.response && !action.request.reset ? { ...state.response } : undefined;
   return {
     ...state,
     isLoading: true,

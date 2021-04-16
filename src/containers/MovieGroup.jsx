@@ -8,9 +8,7 @@ const MovieGroup = ({ movies, isLoading }) => {
   return (
     <MovieList>
       {movies &&
-        movies.map((movie) => (
-          <MovieContainer movie={movie} key={movie.id}></MovieContainer>
-        ))}
+        movies.map((movie) => <MovieContainer movie={movie} key={movie.id}></MovieContainer>)}
       <LoaderComponent isLoading={isLoading} />
     </MovieList>
   );
