@@ -1,16 +1,23 @@
 {
   "files": {
-    "main.js": "/season-movies-react/static/js/main.1cb9b1aa.chunk.js",
-    "main.js.map": "/season-movies-react/static/js/main.1cb9b1aa.chunk.js.map",
-    "runtime-main.js": "/season-movies-react/static/js/runtime-main.8950b5b6.js",
-    "runtime-main.js.map": "/season-movies-react/static/js/runtime-main.8950b5b6.js.map",
-    "static/css/2.a2bd1f3c.chunk.css": "/season-movies-react/static/css/2.a2bd1f3c.chunk.css",
-    "static/js/2.2402687c.chunk.js": "/season-movies-react/static/js/2.2402687c.chunk.js",
-    "static/js/2.2402687c.chunk.js.map": "/season-movies-react/static/js/2.2402687c.chunk.js.map",
+    "main.js": "/season-movies-react/static/js/main.ffff1b95.chunk.js",
+    "main.js.map": "/season-movies-react/static/js/main.ffff1b95.chunk.js.map",
+    "runtime-main.js": "/season-movies-react/static/js/runtime-main.dbd33210.js",
+    "runtime-main.js.map": "/season-movies-react/static/js/runtime-main.dbd33210.js.map",
+    "static/css/2.e2ae9fde.chunk.css": "/season-movies-react/static/css/2.e2ae9fde.chunk.css",
+    "static/js/2.fc3ad5d9.chunk.js": "/season-movies-react/static/js/2.fc3ad5d9.chunk.js",
+    "static/js/2.fc3ad5d9.chunk.js.map": "/season-movies-react/static/js/2.fc3ad5d9.chunk.js.map",
+    "static/js/3.2b83d500.chunk.js": "/season-movies-react/static/js/3.2b83d500.chunk.js",
+    "static/js/3.2b83d500.chunk.js.map": "/season-movies-react/static/js/3.2b83d500.chunk.js.map",
     "index.html": "/season-movies-react/index.html",
-    "precache-manifest.ece9b740e3198041cf7bb36677b8ee2d.js": "/season-movies-react/precache-manifest.ece9b740e3198041cf7bb36677b8ee2d.js",
-    "service-worker.js": "/season-movies-react/service-worker.js",
-    "static/css/2.a2bd1f3c.chunk.css.map": "/season-movies-react/static/css/2.a2bd1f3c.chunk.css.map",
-    "static/media/blueprint-icons.css": "/season-movies-react/static/media/icons-20.cef8cdbb.woff"
-  }
+    "static/css/2.e2ae9fde.chunk.css.map": "/season-movies-react/static/css/2.e2ae9fde.chunk.css.map",
+    "static/js/2.fc3ad5d9.chunk.js.LICENSE.txt": "/season-movies-react/static/js/2.fc3ad5d9.chunk.js.LICENSE.txt",
+    "static/media/blueprint-icons.css": "/season-movies-react/static/media/icons-20.cde033c5.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dbd33210.js",
+    "static/css/2.e2ae9fde.chunk.css",
+    "static/js/2.fc3ad5d9.chunk.js",
+    "static/js/main.ffff1b95.chunk.js"
+  ]
 }
