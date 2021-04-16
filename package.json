@@ -1,48 +1,46 @@
 {
   "name": "season-movies-react",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "homepage": "https://jorgevillalta.github.io/season-movies-react/",
   "scripts": {
     "start": "react-scripts start",
     "lint": "eslint src/**/*{.jsx,.js}",
-    "test": "react-scripts test",
-    "storybook": "start-storybook -p 9009 -s public",
+    "format": "prettier --write src/**/*.{jsx,js}",
     "build": "react-scripts build",
-    "build-storybook": "build-storybook -s public",
+    "test": "react-scripts test",
     "deploy": "npm run build && npx gh-pages -d build"
   },
   "dependencies": {
-    "@blueprintjs/core": "^3.42.0",
-    "@blueprintjs/datetime": "^3.22.0",
+    "@blueprintjs/core": "^3.43.0",
+    "@blueprintjs/datetime": "^3.22.1",
     "@blueprintjs/icons": "^3.26.0",
-    "@blueprintjs/select": "^3.15.9",
-    "@blueprintjs/table": "^3.8.27",
+    "@blueprintjs/select": "^3.15.10",
+    "@blueprintjs/table": "^3.8.28",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
     "lodash": "^4.17.21",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
-    "react-scripts": "3.1.2",
+    "react-scripts": "4.0.3",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.2.3",
+    "web-vitals": "^1.1.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.3.21",
-    "@storybook/addon-knobs": "^5.3.21",
-    "@storybook/addon-links": "^5.3.21",
-    "@storybook/addons": "^5.3.21",
-    "@storybook/react": "^5.3.21",
-    "babel-plugin-macros": "^2.8.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.23.1"
+    "babel-plugin-macros": "^3.0.1",
+    "prettier": "^2.2.1"
   },
-  "babelMacros": {
-    "styledComponents": {
-      "pure": true
-    }
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -56,7 +54,9 @@
       "last 1 safari version"
     ]
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "babelMacros": {
+    "styledComponents": {
+      "pure": true
+    }
   }
 }
