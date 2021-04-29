@@ -1,8 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**📣 Follow this [link](https://jorgevillalta.github.io/season-movies-react/) to watch a live demo of this project. 📣**
 
-based on: https://medium.com/@levifuller/how-to-build-a-scalable-movie-browser-app-using-react-and-redux-in-visual-studio-code-dea8bfb3eabe
+## Season Movies 🎉🎬
 
-### Useful Links
+A simple **react** application to find out what movies were in theaters on a certain date.
 
-UseEffect hook explained in detail: https://overreacted.io/a-complete-guide-to-useeffect/
-Fetching data with hooks: https://www.robinwieruch.de/react-hooks-fetch-data
+
+### Used libraries 📚
+
+- React 17 (using hooks)
+- Redux as state management
+- [Styled components](https://styled-components.com/) to define styles
+- The Movie Database [API](https://developers.themoviedb.org/3/getting-started/introduction) to request movies data
+
+### Work in progress 🚧
+
+- New branch with redux toolkit implementation
