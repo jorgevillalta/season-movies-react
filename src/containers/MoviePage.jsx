@@ -4,9 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 
-import { getMovies } from '../actions';
 import * as scrollHelpers from '../common/scroll.helpers';
-import * as movieHelpers from './helpers';
+import {
+  fetchMovies,
+  fetchMoviesNext,
+  selectIsLoading,
+  selectMovies
+} from '../features/movies/moviesSlice';
 import MovieGroup from './MovieGroup';
 import MovieModal from './MovieModal';
 
@@ -33,11 +37,10 @@ const StyledGridDiv = styled.div`
 const MoviePage = () => {
   const dispatch = useDispatch();
 
-  const [currentPage, setCurrentPage] = useState(1);
   const [birthDate, setBirthDate] = useState(new Date('1983-06-13'));
 
-  const { response, isLoading } = useSelector((state) => state.movieBrowser.movieList);
-  const movies = movieHelpers.getMoviesList(response); // TODO useMemo when response changes
+  const movieList = useSelector(selectMovies);
+  const isLoading = useSelector(selectIsLoading);
 
   /* */
   const handleDateChange = (date, isUserChange) => {
@@ -48,7 +51,7 @@ const MoviePage = () => {
 
   /* Effect to handle birth date changes (including first page load) */
   useEffect(() => {
-    dispatch(getMovies(birthDate, 1, true)); // reset results = true
+    dispatch(fetchMovies({ date: birthDate }));
   }, [dispatch, birthDate]);
 
   /* Effect to handle window scroll changes */
@@ -56,17 +59,15 @@ const MoviePage = () => {
     const handleScroll = () => {
       if (!isLoading) {
         let percentageScrolled = scrollHelpers.getScrollDownPercentage(window);
-        if (percentageScrolled > 0.8) {
-          const nextPage = currentPage + 1;
-          dispatch(getMovies(birthDate, nextPage));
-          setCurrentPage(nextPage);
+        if (percentageScrolled > 0.95) {
+          dispatch(fetchMoviesNext({ date: birthDate }));
         }
       }
     };
     window.onscroll = handleScroll;
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [dispatch, currentPage, isLoading, birthDate]);
+  }, [dispatch, isLoading, birthDate]);
 
   /* */
   return (
@@ -86,10 +87,11 @@ const MoviePage = () => {
               parseDate={(str) => new Date(str)}
               placeholder={'D/M/YYYY'}
               minDate={new Date('1902-01-01')}
+              value={birthDate}
             />
           </div>
           <div>
-            <MovieGroup movies={movies} isLoading={isLoading} />
+            <MovieGroup movies={movieList} isLoading={isLoading} />
           </div>
         </StyledGridDiv>
       </StyledContentDiv>

@@ -1,3 +1,5 @@
+import { normalizeMovieList, updateMoviePictureUrls } from './helpers';
+
 const { REACT_APP_MOVIE_DB_API_KEY, REACT_APP_MOVIE_DB_BASE_URL } = process.env;
 
 const createMovieDbUrl = (relativeUrl, queryParams) => {
@@ -10,21 +12,18 @@ const createMovieDbUrl = (relativeUrl, queryParams) => {
   return baseUrl;
 };
 
-const callApi = (endpoint) => {
-  return fetch(endpoint).then((response) =>
-    response.json().then((json) => {
-      if (!response.ok) {
-        return Promise.reject(json);
-      }
+const callApi = async (endpoint) => {
+  const response = await fetch(endpoint);
 
-      // normalization
-      // ...
+  if (!response.ok) {
+    const message = `An error has occured: ${response.status}`;
+    throw new Error(message);
+  }
 
-      return {
-        ...json
-      };
-    })
-  );
+  //
+  const json = await response.json();
+
+  return { ...json };
 };
 
 export const getTopMovies = async ({ page }) => {
@@ -44,7 +43,14 @@ export const searchMovies = async ({ page, query }) => {
 
 export const getMovieDetails = async ({ movieId }) => {
   const fullUrl = createMovieDbUrl(`/movie/${movieId}`);
-  return callApi(fullUrl);
+
+  // call
+  const response = await callApi(fullUrl);
+
+  // normalize data
+  const movie = updateMoviePictureUrls(response);
+
+  return movie;
 };
 
 export const getMoviesInDate = async ({ date = new Date(), page = 1 }) => {
@@ -64,5 +70,12 @@ export const getMoviesInDate = async ({ date = new Date(), page = 1 }) => {
     'primary_release_date.gte': dateStart.toISOString().split('T')[0],
     'primary_release_date.lte': date.toISOString().split('T')[0]
   });
-  return callApi(fullUrl);
+
+  // call
+  const response = await callApi(fullUrl);
+
+  // normalize data
+  const movieList = normalizeMovieList(response.results);
+
+  return movieList;
 };
