@@ -1,8 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createGlobalStyle, ThemeProvider } from 'styled-components/macro';
-
 import MoviePage from './containers/MoviePage';
+
+// import MoviePage from './containers/MoviePage';
 import store from './store';
 
 // import { Button, Card, H5, Classes } from '@blueprintjs/core';
@@ -19,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// TODO move to a file
+//
 const theme = {
   colors: {
     lightGray1: '#CED9E0',

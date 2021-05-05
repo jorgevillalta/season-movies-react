@@ -1,10 +1,11 @@
 import { Classes, Dialog, H1, H5 } from '@blueprintjs/core';
-import React, { useCallback, useEffect, useMemo } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import React, { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
-import { getMovieDetails } from '../actions';
-import { closeMovieModal } from '../actions/modal';
+
 import Loader from '../components/Loader';
+import { layoutClose, selectIsMovieModalOpen } from '../features/layouts/layoutsSlice';
+import { selectIsLoading, selectMovieSelected } from '../features/movies/moviesSlice';
 
 const StyledDialog = styled(Dialog)`
   /*.bp3-dialog-body {
@@ -36,33 +37,19 @@ const useFormatMovie = (movie) => {
 const MovieModal = () => {
   const dispatch = useDispatch();
 
-  const { isOpen, movieId, isLoading, response } = useSelector(
-    (state) => ({
-      isOpen: state.movieBrowser.movieModal.isOpen || false,
-      movieId: state.movieBrowser.movieModal.movieId,
-      isLoading: state.movieBrowser.movieDetails.isLoading || false,
-      response: state.movieBrowser.movieDetails.response
-    }),
-    shallowEqual
+  const isOpened = useSelector(selectIsMovieModalOpen);
+  const isLoading = useSelector(selectIsLoading);
+
+  /* */
+  const { title, date, genres, overview, popularity, budget } = useFormatMovie(
+    useSelector(selectMovieSelected)
   );
 
   /* */
-  useEffect(() => {
-    if (movieId) {
-      dispatch(getMovieDetails(movieId));
-    }
-  }, [dispatch, movieId]);
-
-  /* */
-  const { title, date, genres, overview, popularity, budget } = useFormatMovie(response);
-
-  /* */
-  const clickCloseMovieModal = useCallback(() => {
-    dispatch(closeMovieModal());
-  }, [dispatch]);
+  const clickCloseMovieModal = () => dispatch(layoutClose('movieModal'));
 
   return (
-    <StyledDialog title={null} onClose={clickCloseMovieModal} isOpen={isOpen}>
+    <StyledDialog title={null} onClose={clickCloseMovieModal} isOpen={isOpened}>
       <div className={Classes.DIALOG_BODY}>
         <Loader isLoading={isLoading}>
           <H1>{title}</H1>
@@ -76,20 +63,5 @@ const MovieModal = () => {
     </StyledDialog>
   );
 };
-// "connect" our movie modal to the component store
-/*export default connect(
-  // Map nodes in our state to a properties of our component
-  (state) => ({
-    // Using lodash get, recursively check that a property is defined
-    // before try to access it - if it is undefined, it will return your default value
-    // _.get(object, 'path.to.targets[0].neat.stuff', defaultValue)
-    isOpen: _.get(state, 'movieBrowser.movieModal.isOpen', false),
-    movieId: _.get(state, 'movieBrowser.movieModal.movieId'),
-    movie: _.get(state, 'movieBrowser.movieDetails.response', {}),
-    isLoading: _.get(state, 'movieBrowser.movieDetails.isLoading', false)
-  }),
-  // Map an action to a prop, ready to be dispatched
-  { closeMovieModal, getMovieDetails }
-)(MovieModalContainer);*/
 
 export default MovieModal;
